@@ -1,0 +1,76 @@
+#!/bin/pytho
+# coding: utf-8
+from os import mkdir, chdir
+
+args = ["ham"]
+if len(args) < 1:
+    print("Needs atleast project name")
+    exit(1)
+
+prjname = args[0]
+
+print("Making folder")
+mkdir(prjname)
+chdir(prjname)
+
+
+def write(f, text):
+    with open(f, "w") as fh:
+        fh.write(text)
+
+
+
+main = """#!/bin/python
+# coding: utf-8
+import logging
+
+
+log = logging.getLogger("{}")
+
+
+# TODO: Overwrite.
+def debug():
+    return True
+
+if debug():
+    logging.basicConfig()
+    log.setLevel(logging.DEBUG)
+else:
+    logging.basicConfig(filename="mylogs.txt")
+
+
+
+def main():
+    raise NotImplementedError()
+
+if __name__ == "__main__":
+    main()""".format(prjname)
+write("main.py", main)
+
+
+print("Making doit script")
+doit = """#!/bin/python
+import os
+
+def task_install():
+    return {
+        'actions': ["bash installs"],
+        'file_dep': ["installs"],
+        'verbosity': 2
+    }
+
+def task_rundebug():
+    return {
+        "actions": ["python main.py", ],
+        "verbosity": 2
+    }
+
+def task_runtests():
+    return {
+        "actions": ["go test dbclient", "go test statemanager -v"],
+        "verbosity": 2
+    }"""
+write("dodo.py", doit)
+
+print("Making depedencies")
+write("installs", "sudo apt-get install -y python")
