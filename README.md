@@ -24,7 +24,7 @@ ses run <snippetname> <args>
 
 e.g you want to bootstrap a python app called awesome_app
 ```
-ses run bootstrapython awesome_app
+ses run bootstrappython awesome_app
 ```
 
 Sunday.zone repository
