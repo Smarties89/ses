@@ -1,2 +1,2 @@
 #!/bin/bash
-python -m SimpleHTTPServer 5000
+python -m SimpleHTTPServer 6005
