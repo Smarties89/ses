@@ -29,6 +29,6 @@ Sunday.zone repository
 ----------------------
 Sunday zone is the default repository.
 
-* bootstrappython - bootstraps a default python environment with python-doit file for running, installing depedencies, run test.
-* cleanlatex - Cleans common annoying temporary LaTeX files that some LaTeX compilers output.
+* **bootstrappython** - bootstraps a default python environment with python-doit file for running, installing depedencies, run test.
+* **cleanlatex** - Cleans common annoying temporary LaTeX files that some LaTeX compilers output.
 
