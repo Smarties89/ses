@@ -1,0 +1,5 @@
+#!/bin/python
+# coding: utf-8
+from subprocess import call
+
+call("rm *.aux *.bbl *.blg *.log *.out *.toc", shell=True)
