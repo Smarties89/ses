@@ -66,10 +66,15 @@ def task_rundebug():
 
 def task_runtests():
     return {
-        "actions": ["go test dbclient", "go test statemanager -v"],
+        "actions": ["python -m unittest"],
         "verbosity": 2
     }"""
 write("dodo.py", doit)
 
 print("Making depedencies")
 write("installs", "sudo apt-get install -y python")
+
+
+print("Making test folder")
+mkdir("test")
+write("test/__init__.py", "#!/usr/bin/python\n#place, or import, your test here")
