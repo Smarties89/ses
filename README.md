@@ -10,15 +10,17 @@ How does ses work
 -----------------
 
 First you need to install ses by simply type the following in your command line
-´´´
+
+```
 sudo wget https://raw.githubusercontent.com/Smarties89/ses/master/ses --output-document=/usr/bin/ses
 sudo chmod +x /usr/bin/ses
-´´´
+```
 
 Now you can install any snippets in the repositories by calling:
-´´´
+
+```
 ses run <snippetname> <args>
-´´´
+```
 
 e.g you want to bootstrap a python app called awesome_app
 ´´´
