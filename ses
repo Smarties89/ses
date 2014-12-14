@@ -74,6 +74,8 @@ def main():
     cmd = getarg(1)
     if cmd == "run":
         runcmd(getarg(2), getrestofargs(3))
+    else:
+        print("Wrong arguments. Right now ses only supports ses run <script>")
 
 
 if __name__ == "__main__":
