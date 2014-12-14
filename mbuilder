@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./ses run testscript

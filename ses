@@ -1,0 +1,80 @@
+#!/usr/bin/python
+# coding: utf-8
+import logging
+from sys import argv
+import urllib2
+
+log = logging.getLogger("ses")
+repos = [
+    "http://localhost:5000",
+    "http://sunday.zone/ses/"
+]
+
+
+def debug():
+    return True
+
+
+if debug():
+    logging.basicConfig()
+    log.setLevel(logging.DEBUG)
+else:
+    logging.basicConfig()
+    log.setLevel(logging.INFO)
+
+
+# The only reason why implementing this instead of using python-request
+# - or other fancy http libs - is to avoid any external libraries, so
+# that it can easily be installed.
+def httpdownload(url):
+    if not url.startswith("http://"):
+        url = "http://" + url
+
+    try:
+        response = urllib2.urlopen(url)
+        if response.getcode() != 200:
+            return None
+        return response.read()
+    except Exception:
+        print("'{}' not found.".format(url))
+        return None
+    # TODO: Figure out what exactly urlopen can give of exceptions, 
+    # and print out better error messages.
+
+
+def getarg(i):
+    try:
+        return argv[i]
+    except:
+        return None
+
+
+def getrestofargs(i):
+    try:
+        return argv[i:]
+    except:
+        return []
+
+
+def runcmd(torun, args):
+    for repo in repos:
+        print("Trying repository '{}'".format(repo))
+        if not repo.endswith("/"):
+            repo += "/"
+        script = httpdownload(repo + torun)
+        if script is None:
+            print("Not found.")
+        else:
+            print("FOUND {}! Now running it".format(torun))
+            exec(script)
+            break
+
+
+def main():
+    cmd = getarg(1)
+    if cmd == "run":
+        runcmd(getarg(2), getrestofargs(3))
+
+
+if __name__ == "__main__":
+    main()

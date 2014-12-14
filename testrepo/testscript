@@ -1,0 +1,5 @@
+#!/bin/python
+# coding: utf-8
+
+
+print("test script run with following args {}".format(args))
