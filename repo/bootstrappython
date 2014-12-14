@@ -2,7 +2,6 @@
 # coding: utf-8
 from os import mkdir, chdir
 
-args = ["ham"]
 if len(args) < 1:
     print("Needs atleast project name")
     exit(1)
