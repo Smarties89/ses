@@ -37,7 +37,7 @@ Sunday zone is the default repository.
 Running your own repository
 ---------------------------
 
-Running your own repository is easy, since what is reqired is a HTTP server with exposing the scripts as files. Any HTTP server that will serve files will do. You can also use mine - which is a small script that starts a SimpleHTTPServer(Python). This is found in repo directory, and you should just call ```./run.bash```.
+Running your own repository is easy, since the only requirement is a HTTP server with exposing the scripts as files. Any HTTP server that will serve files will do. You can also use mine - which is a small script that starts a SimpleHTTPServer(Python). This is found in repo directory, and you should just call ```./run.bash```. Now you need to add your repository to ses - see next section for this.
 
 
 Adding your own repository to ses
@@ -58,5 +58,4 @@ repos = [
 "http://myawesomedomain.io/sesrepository"
 ]
 ```
-
-  Now you can distribute your *ses* file in your orginasation.  
+Now you can distribute your *ses* file in your orginasation.
