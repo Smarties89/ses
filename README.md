@@ -38,3 +38,25 @@ Running your own repository
 ---------------------------
 
 Running your own repository is easy, since what is reqired is a HTTP server with exposing the scripts as files. Any HTTP server that will serve files will do. You can also use mine - which is a small script that starts a SimpleHTTPServer(Python). This is found in repo directory, and you should just call ```./run.bash```.
+
+
+Adding your own repository to ses
+---------------------------------
+
+To add your own repository to ses, simply copy the ses file and edit the line 8 to 11 from
+```
+repos = [
+"http://localhost:6005",
+"http://sunday.zone/ses/"
+]
+```
+to
+```
+repos = [
+"http://localhost:6005",
+"http://sunday.zone/ses/",
+"http://myawesomedomain.io/sesrepository"
+]
+```
+
+  Now you can distribute your *ses* file in your orginasation.  
