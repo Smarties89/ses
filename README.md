@@ -34,3 +34,7 @@ Sunday zone is the default repository.
 * **bootstrappython** - bootstraps a default python environment with python-doit file for running, installing depedencies, run test.
 * **cleanlatex** - Cleans common annoying temporary LaTeX files that some LaTeX compilers output.
 
+Running your own repository
+---------------------------
+
+Running your own repository is easy, since what is reqired is a HTTP server with exposing the scripts as files. Any HTTP server that will serve files will do. You can also use mine - which is a small script that starts a SimpleHTTPServer(Python). This is found in repo directory, and you should just call ```./run.bash```.
