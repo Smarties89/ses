@@ -1,7 +1,7 @@
 ses
 ===
 
-Simple Execution Environment - run snippets from the commandline
+Simple Execution System - run snippets from the commandline
 
 ses helps running snippets of python code from centralized repositories. This can make it easier for sharing code that could be used for bootstrap projects, run daily tasks etc. There are currently localhost:6005 and http://sunday.zone/ses/ as repositories, but you can change whatever you like and make your own repositority and ses file for your colleagues.
 
@@ -34,3 +34,28 @@ Sunday zone is the default repository.
 * **bootstrappython** - bootstraps a default python environment with python-doit file for running, installing depedencies, run test.
 * **cleanlatex** - Cleans common annoying temporary LaTeX files that some LaTeX compilers output.
 
+Running your own repository
+---------------------------
+
+Running your own repository is easy, since the only requirement is a HTTP server with exposing the scripts as files. Any HTTP server that will serve files will do. You can also use mine - which is a small script that starts a SimpleHTTPServer(Python). This is found in repo directory, and you should just call ```./run.bash```. Now you need to add your repository to ses - see next section for this.
+
+
+Adding your own repository to ses
+---------------------------------
+
+To add your own repository to ses, simply copy the ses file and edit the line 8 to 11 from
+```
+repos = [
+"http://localhost:6005",
+"http://sunday.zone/ses/"
+]
+```
+to
+```
+repos = [
+"http://localhost:6005",
+"http://sunday.zone/ses/",
+"http://myawesomedomain.io/sesrepository"
+]
+```
+Now you can distribute your *ses* file in your orginasation.
