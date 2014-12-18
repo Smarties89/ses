@@ -1,9 +1,9 @@
 ses
 ===
 
-Simple Execution System - run snippets from the commandline
+Simple Execution System - run centralized snippets from the commandline
 
-ses helps running snippets of python code from centralized repositories. This can make it easier for sharing code that could be used for bootstrap projects, run daily tasks etc. There are currently localhost:6005 and http://sunday.zone/ses/ as repositories, but you can change whatever you like and make your own repositority and ses file for your colleagues.
+ses helps running snippets of python code from centralized repositories. This can make it easier for sharing code that could be used for bootstrap projects, run daily tasks etc. There are currently two repositories http://localhost:6005 and http://sunday.zone/ses/, but you can change whatever you like and make your own repositority and distribute the *ses* file for your colleagues.
 
 
 How does ses work
