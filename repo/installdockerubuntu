@@ -2,11 +2,9 @@
 # coding: utf-8
 
 """
-    Installing docker.io on Ubuntu 14.04 and 14.10 is not a painless
-    sudo apt-get install docker.io, but also some other steps.
-    I made this for a quick fix. Taken from the tutorial
-    https://docs.docker.com/installation/ubuntulinux/ section
-    Ubuntu Trusty 14.04 (LTS) (64-bit).
+    Installing newest docker.io Ubuntu 14.04 and 14.10. Taken from:
+    https://docs.docker.com/installation/ubuntulinux/
+    in section Ubuntu Trusty 14.04 (LTS) (64-bit).
     Remark that this adds docker to your APT repositories.
 """
 
