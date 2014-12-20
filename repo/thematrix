@@ -1,0 +1,65 @@
+#!/bin/python
+# coding: utf-8
+"""
+    One of the first scripts i ever made in Python. Simply shows the matrix.
+"""
+
+import os
+import random
+import time
+import sys
+
+
+__author__ = "Smarties at github"
+
+
+# This function is taken from
+# http://stackoverflow.com/questions/566746/how-to-get-console-window-width-in-python
+# and slightly modified
+def getTerminalSize():
+    env = os.environ
+    def ioctl_GWINSZ(fd):
+        try:
+            import fcntl, termios, struct, os
+            cr = struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ,
+        '1234'))
+        except:
+            return
+        return cr
+    cr = ioctl_GWINSZ(0) or ioctl_GWINSZ(1) or ioctl_GWINSZ(2)
+    if not cr:
+        try:
+            fd = os.open(os.ctermid(), os.O_RDONLY)
+            cr = ioctl_GWINSZ(fd)
+            os.close(fd)
+        except:
+            pass
+    if not cr:
+        cr = (env.get('LINES', 25), env.get('COLUMNS', 80))
+
+    return int(cr[1]), int(cr[0])
+
+
+def calcrefreshtime(args):
+    width = getTerminalSize()[0]
+
+    # Refeshtime is defined either by argument or algorithm.
+    if len(args) > 0:
+        return args[0]
+    else:
+        return 15. / width
+
+
+def main(args):
+    while(True): 
+        refreshtime = calcrefreshtime(args)
+        width = getTerminalSize()[0]
+
+        for i in range(0, width/3):
+            sys.stdout.write(" {}".format(chr(33+random.randint(0,90))+chr(33+random.randint(0,90))))
+            sys.stdout.flush()
+        
+        print("")
+        sys.stdout.flush()
+
+        time.sleep(refreshtime)
