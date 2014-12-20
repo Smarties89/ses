@@ -58,13 +58,14 @@ def getrestofargs(i):
         return []
 
 
-def runscript(script, args):
+def betterexec(script):
+    """ This takes a script string and import it as a file """
     scriptfile = tempfile.NamedTemporaryFile()
     scriptfile.write(script)
     scriptfile.flush()
-
-    print("Now running it")
-    imp.load_source("name", scriptfile.name).main(args)
+    obj =imp.load_source("name", scriptfile.name)
+    scriptfile.close()
+    return obj
 
 
 def getscript(torun):
@@ -87,7 +88,18 @@ def main():
         scriptname = getarg(2)
         scriptargs = getrestofargs(3)
         script = getscript(scriptname)
-        runscript(script, scriptargs)
+        if script is not None:
+            print("Running script")
+            betterexec(script).main(scriptargs)
+        else:
+            print("Could not find script")
+    elif cmd == "info":
+        scriptname = getarg(2)
+        script = getscript(scriptname)
+        if script is not None:
+            print(betterexec(script).__doc__)
+        else:
+            print("Could not find script")
     else:
         print("Wrong arguments. Right now ses only supports ses run <script>")
 
