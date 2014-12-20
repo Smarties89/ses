@@ -1,0 +1,33 @@
+#!/bin/python
+# coding: utf-8
+
+"""
+    Installing docker.io on Ubuntu 14.04 and 14.10 is not a painless
+    sudo apt-get install docker.io, but also some other steps.
+    I made this for a quick fix. Taken from the tutorial
+    https://docs.docker.com/installation/ubuntulinux/ section
+    Ubuntu Trusty 14.04 (LTS) (64-bit).
+    Remark that this adds docker to your APT repositories.
+"""
+
+from subprocess import call
+
+__author__ = "smarties at github"
+
+
+def main(args):
+    cmds = """
+[ -e /usr/lib/apt/methods/https ] || {
+    apt-get update
+    apt-get install apt-transport-https
+}
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+sudo sh -c "echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+sudo apt-get update
+sudo apt-get install lxc-docker"""
+    call(cmds, shell=True)
+
+
+if __name__ == "__main__":
+    main([])
