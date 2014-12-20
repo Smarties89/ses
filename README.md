@@ -29,10 +29,12 @@ ses run bootstrappython awesome_app
 
 Sunday.zone repository
 ----------------------
-Sunday zone is the default repository.
+Sunday zone is the default repository, and has so far the following scripts:
 
 * **bootstrappython** - bootstraps a default python environment with python-doit file for running, installing depedencies, run test.
 * **cleanlatex** - Cleans common annoying temporary LaTeX files that some LaTeX compilers output.
+* **thematrix** - The matrix.
+* **installdockerubuntu** - Simple installer script for installing latest (working) version of docker(Wrapper for https://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit ).
 
 Running your own repository
 ---------------------------
