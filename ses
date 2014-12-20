@@ -67,7 +67,7 @@ def runscript(script, args):
     imp.load_source("name", scriptfile.name).main(args)
 
 
-def runcmd(torun, args):
+def getscript(torun):
     for repo in repos:
         print("Trying repository '{}'".format(repo))
         if not repo.endswith("/"):
@@ -76,15 +76,18 @@ def runcmd(torun, args):
         if script is None:
             print("Not found.")
         else:
-            print("FOUND {}!".format(torun))
-            runscript(script, args)
-            break
+            print("FOUND  {} script!".format(torun))
+            return script
+    return None
 
 
 def main():
     cmd = getarg(1)
     if cmd == "run":
-        runcmd(getarg(2), getrestofargs(3))
+        scriptname = getarg(2)
+        scriptargs = getrestofargs(3)
+        script = getscript(scriptname)
+        runscript(script, scriptargs)
     else:
         print("Wrong arguments. Right now ses only supports ses run <script>")
 
