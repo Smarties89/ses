@@ -2,24 +2,23 @@
 # coding: utf-8
 from os import mkdir, chdir
 
-if len(args) < 1:
-    print("Needs atleast project name")
-    exit(1)
-
-prjname = args[0]
-
-print("Making folder")
-mkdir(prjname)
-chdir(prjname)
-
 
 def write(f, text):
     with open(f, "w") as fh:
         fh.write(text)
 
 
+def main(args):
+    if len(args) < 1:
+        print("Needs atleast project name")
+        return 1
 
-main = """#!/bin/python
+    prjname = args[0]
+    print("Making folder")
+    mkdir(prjname)
+    chdir(prjname)
+
+    main = """#!/bin/python
 # coding: utf-8
 import logging
 
@@ -44,11 +43,10 @@ def main():
 
 if __name__ == "__main__":
     main()""".format(prjname)
-write("main.py", main)
+    write("main.py", main)
 
-
-print("Making doit script")
-doit = """#!/bin/python
+    print("Making doit script")
+    doit = """#!/bin/python
 import os
 
 def task_install():
@@ -69,12 +67,12 @@ def task_runtests():
         "actions": ["python -m unittest"],
         "verbosity": 2
     }"""
-write("dodo.py", doit)
+    write("dodo.py", doit)
 
-print("Making depedencies")
-write("installs", "sudo apt-get install -y python")
+    print("Making depedencies")
+    write("installs", "sudo apt-get install -y python")
 
 
-print("Making test folder")
-mkdir("test")
-write("test/__init__.py", "#!/usr/bin/python\n#place, or import, your test here")
+    print("Making test folder")
+    mkdir("test")
+    write("test/__init__.py", "#!/usr/bin/python\n#place, or import, your test here")

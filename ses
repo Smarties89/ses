@@ -3,6 +3,8 @@
 import logging
 from sys import argv
 import urllib2
+import tempfile
+import imp
 
 log = logging.getLogger("ses")
 repos = [
@@ -38,7 +40,7 @@ def httpdownload(url):
     except Exception:
         print("'{}' not found.".format(url))
         return None
-    # TODO: Figure out what exactly urlopen can give of exceptions, 
+    # TODO: Figure out what exactly urlopen can give of exceptions,
     # and print out better error messages.
 
 
@@ -56,6 +58,15 @@ def getrestofargs(i):
         return []
 
 
+def runscript(script, args):
+    scriptfile = tempfile.NamedTemporaryFile()
+    scriptfile.write(script)
+    scriptfile.flush()
+
+    print("Now running it")
+    imp.load_source("name", scriptfile.name).main(args)
+
+
 def runcmd(torun, args):
     for repo in repos:
         print("Trying repository '{}'".format(repo))
@@ -65,8 +76,8 @@ def runcmd(torun, args):
         if script is None:
             print("Not found.")
         else:
-            print("FOUND {}! Now running it".format(torun))
-            exec(script)
+            print("FOUND {}!".format(torun))
+            runscript(script, args)
             break
 
 

@@ -2,4 +2,5 @@
 # coding: utf-8
 from subprocess import call
 
-call("rm *.aux *.bbl *.blg *.log *.out *.toc", shell=True)
+def main(args):
+    call("rm *.aux *.bbl *.blg *.log *.out *.toc", shell=True)
