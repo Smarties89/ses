@@ -7,10 +7,11 @@ ses helps running snippets of python code from centralized repositories. This ca
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [How does ses work](#)
-- [Sunday.zone repository](#)
-- [Running your own repository](#)
-- [Adding your own repository to ses](#)
+- How does ses work
+- Some use cases of ses
+- Sunday.zone repository
+- Running your own repository
+- Adding your own repository to ses
 
 
 How does ses work
