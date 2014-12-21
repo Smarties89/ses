@@ -12,6 +12,7 @@ ses helps running snippets of python code from centralized repositories. This ca
 - Sunday.zone repository
 - Running your own repository
 - Adding your own repository to ses
+- Upcoming features
 
 
 How does ses work
@@ -33,6 +34,17 @@ ses run <snippetname> <args>
 e.g you want to bootstrap a python app called awesome_app
 ```
 ses run bootstrappython awesome_app
+```
+
+Some snippets may have docstring information. If you want to see this you can use ```ses info <snippetname>```. E.g.
+```
+user@host:~/Documents$ ses info update
+Trying repository 'http://localhost:6005'
+Trying repository 'http://sunday.zone/ses/'
+FOUND  update script!
+
+    Updates ses to newest version. Executes the same commands as
+    https://github.com/Smarties89/ses section "How does ses work"
 ```
 
 Some use cases of ses
@@ -68,15 +80,29 @@ To add your own repository to ses, simply copy the ses file and edit the line 8 
 ```
 repos = [
 "http://localhost:6005",
+"https://sunday.zone/ses/",
 "http://sunday.zone/ses/"
+
 ]
 ```
 to
 ```
 repos = [
 "http://localhost:6005",
+"https://sunday.zone/ses/",
 "http://sunday.zone/ses/",
 "http://myawesomedomain.io/sesrepository"
 ]
 ```
 Now you can distribute your *ses* file in your organisation. Of course you can remove and change the order of repositories as it fit you, and your organisation
+
+Upcoming features
+-----------------
+
+ses is far from complete, but it includes basic functionality making it useful for developers.
+The plan for new features is the following:
+
+* *ses search* command to search files.
+* *ses list* command to show all possible snippets.
+* Some kind of usersystem for restricting download - not sure about how or if this is going to be implemented.
+* More useful snippets.
