@@ -20,8 +20,8 @@ How does ses work
 First you need to install ses by simply type the following in your command line
 
 ```
-sudo wget https://raw.githubusercontent.com/Smarties89/ses/master/ses --output-document=/usr/bin/ses
-sudo chmod +x /usr/bin/ses
+sudo wget https://raw.githubusercontent.com/Smarties89/ses/master/ses --output-document=/usr/local/bin/ses
+sudo chmod +x /usr/local/bin/ses
 ```
 
 Now you can install any snippets in the repositories by calling:
