@@ -37,7 +37,7 @@ def httpdownload(url):
             return None
         return response.read()
     except Exception:
-        print("'{}' not found.".format(url))
+        log.debug("'{}' not found.".format(url))
         return None
     # TODO: Figure out what exactly urlopen can give of exceptions,
     # and print out better error messages.
@@ -74,7 +74,7 @@ def getscript(torun):
             repo += "/"
         script = httpdownload(repo + torun)
         if script is None:
-            print("Not found.")
+            log.debug("Snippet Not found.")
         else:
             print("FOUND  {} script!".format(torun))
             return script
