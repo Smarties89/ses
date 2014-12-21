@@ -7,8 +7,10 @@ import tempfile
 import imp
 
 log = logging.getLogger("ses")
+# repos has to start with http:// or https://
 repos = [
     "http://localhost:6005",
+    "https://sunday.zone/ses/",
     "http://sunday.zone/ses/"
 ]
 
@@ -29,9 +31,6 @@ else:
 # - or other fancy http libs - is to avoid any external libraries, so
 # that it can easily be installed.
 def httpdownload(url):
-    if not url.startswith("http://"):
-        url = "http://" + url
-
     try:
         response = urllib2.urlopen(url)
         if response.getcode() != 200:
