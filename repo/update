@@ -1,0 +1,23 @@
+#!/bin/python
+# coding: utf-8
+
+"""
+    Updates ses to newest version. Executes the same commands as
+    https://github.com/Smarties89/ses section "How does ses work"
+"""
+
+from subprocess import call
+
+__author__ = "smarties89 at github"
+
+
+def main(args):
+    cmds = """
+sudo wget https://raw.githubusercontent.com/Smarties89/ses/master/ses --output-document=/usr/bin/ses
+sudo chmod +x /usr/bin/ses
+"""
+    call(cmds, shell=True)
+
+
+if __name__ == "__main__":
+    main([])
