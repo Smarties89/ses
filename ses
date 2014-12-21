@@ -14,7 +14,7 @@ repos = [
 
 
 def debug():
-    return True
+    return False
 
 
 if debug():
