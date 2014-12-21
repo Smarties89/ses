@@ -34,6 +34,14 @@ e.g you want to bootstrap a python app called awesome_app
 ses run bootstrappython awesome_app
 ```
 
+Some use cases of ses
+---------------------
+Here are some use cases.
+
+* You have some snippets that you can never find, they are on your github, in a folder, in another folder, etc. Make a pull request and add it. Then you can always find it, and share it with your friends.
+* You are a team(or larger organisation) that have complex infrastructure. You make a repository for your internal company repository(just a HTTP server), which contains scripts for bootstrapping new software components, doing routine task, etc. Then you change the ses file to include your internal repository and distribute it to your colleagues.
+* Ses is simple, so you can change it to fit your needs.
+
 Sunday.zone repository
 ----------------------
 Sunday zone is the default repository, and has so far the following scripts:
