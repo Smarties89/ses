@@ -20,8 +20,8 @@ How does ses work
 First you need to install ses by simply type the following in your command line
 
 ```
-sudo wget https://raw.githubusercontent.com/Smarties89/ses/master/ses --output-document=/usr/bin/ses
-sudo chmod +x /usr/bin/ses
+sudo wget https://raw.githubusercontent.com/Smarties89/ses/master/ses --output-document=/usr/local/bin/ses
+sudo chmod +x /usr/local/bin/ses
 ```
 
 Now you can install any snippets in the repositories by calling:
@@ -49,8 +49,9 @@ Sunday zone is the default repository, and has so far the following scripts:
 
 * **bootstrappython** - bootstraps a default python environment with python-doit file for running, installing depedencies, run test.
 * **cleanlatex** - Cleans common annoying temporary LaTeX files that some LaTeX compilers output.
-* **thematrix** - The matrix.
 * **installdockerubuntu** - Simple installer script for installing latest (working) version of docker(Wrapper for https://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit ).
+* **thematrix** - The matrix.
+* **update** - update ses to latest version by running the first two commands in section "How does ses work".
 
 If you have a nice script, add it to the repo folder and make a pull request, and I will add it to the sunday.zone server
 
