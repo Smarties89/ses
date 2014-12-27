@@ -5,13 +5,14 @@ Simple Execution System - run centralized snippets from the commandline
 
 ses helps running snippets of python code from centralized repositories. This can make it easier for sharing code that could be used for bootstrap projects, run daily tasks etc. There are currently one main repository(http://sunday.zone/ses/), but you can make your own reposititory, and distribute a modified *ses* file for your colleagues.
 
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+**Table of Contents**
 
 - How does ses work
 - Some use cases of ses
 - Sunday.zone repository
 - Running your own repository
 - Adding your own repository to ses
+- Supported commands
 - Upcoming features
 
 
@@ -96,6 +97,14 @@ repos = [
 ```
 Now you can distribute your *ses* file in your organisation. Of course you can remove and change the order of repositories as it fit you, and your organisation
 
+Supported commands
+------------------
+
+
+* *ses list* command to show all possible snippets with a short description.
+* *ses run <snippet>* runs the snippet named <snippet>.
+* *ses info <snippet>* shows information about <snippet> - more details than *ses list* gives.
+
 Upcoming features
 -----------------
 
@@ -103,6 +112,6 @@ ses is far from complete, but it includes basic functionality making it useful f
 The plan for new features is the following:
 
 * *ses search* command to search files.
-* *ses list* command to show all possible snippets.
+
 * Some kind of usersystem for restricting download - not sure about how or if this is going to be implemented.
 * More useful snippets.
