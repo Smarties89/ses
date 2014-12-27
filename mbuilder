@@ -1,3 +1,4 @@
 #!/bin/bash
 
+#python makeindex.py
 ./ses run testscript
