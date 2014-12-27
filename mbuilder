@@ -2,3 +2,4 @@
 
 #python makeindex.py
 ./ses run testscript
+#./ses list

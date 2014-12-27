@@ -5,11 +5,12 @@ from sys import argv
 import urllib2
 import tempfile
 import imp
+from json import loads as jsondecode
 
 log = logging.getLogger("ses")
 # repos has to start with http:// or https://
 repos = [
-    "http://localhost:6005",
+    "http://localhost:6005/",
     "https://sunday.zone/ses/",
     "http://sunday.zone/ses/"
 ]
@@ -99,6 +100,22 @@ def main():
             print(betterexec(script).__doc__)
         else:
             print("Could not find script")
+    elif cmd == "list":
+        totalindex = []
+        
+        # Getting them
+        for repo in repos:
+            index = httpdownload(repo + "index")
+            if index is None:
+                continue
+            totalindex.extend(jsondecode(index))
+       
+        # TODO: remove duplicates.
+        
+        # Showing them
+        for snippet in totalindex:
+            print("{name} - {description}".format(**snippet))
+
     else:
         print("Wrong arguments. Right now ses only supports ses run <script>")
 
