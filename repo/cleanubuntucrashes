@@ -1,0 +1,14 @@
+#!/bin/python
+# coding: utf-8
+
+"""
+    Deletes crash reports, so Ubuntu reporting system stops spamming.
+"""
+
+description = "Deletes crash reports, so Ubuntu reporting system stops spamming."
+
+from subprocess import call
+
+
+def main(args):
+    call("sudo rm /var/crash/*", shell=True)
