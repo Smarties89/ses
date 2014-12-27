@@ -12,7 +12,6 @@ ses helps running snippets of python code from centralized repositories. This ca
 - Sunday.zone repository
 - Running your own repository
 - Adding your own repository to ses
-- Supported commands
 - Upcoming features
 
 
@@ -47,6 +46,15 @@ FOUND  update script!
     Updates ses to newest version. Executes the same commands as
     https://github.com/Smarties89/ses section "How does ses work"
 ```
+
+If you want to see more snippets, there is a list command
+```
+user@host:~/Documents$ ses list
+cleanlatex - Cleans common annoying temporary LaTeX files that some LaTeX compilers output.
+testscript - used for testing purposes.
+bootstrappython - bootstraps a default python environment with python-doit file for running, installing depedencies, run test.
+...
+``` 
 
 Some use cases of ses
 ---------------------
@@ -97,21 +105,12 @@ repos = [
 ```
 Now you can distribute your *ses* file in your organisation. Of course you can remove and change the order of repositories as it fit you, and your organisation
 
-Supported commands
-------------------
-
-
-* *ses list* command to show all possible snippets with a short description.
-* *ses run <snippet>* runs the snippet named <snippet>.
-* *ses info <snippet>* shows information about <snippet> - more details than *ses list* gives.
-
 Upcoming features
 -----------------
 
 ses is far from complete, but it includes basic functionality making it useful for developers.
 The plan for new features is the following:
 
-* *ses search* command to search files.
-
+* *ses search* command to search snippets.
 * Some kind of usersystem for restricting download - not sure about how or if this is going to be implemented.
 * More useful snippets.
