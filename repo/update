@@ -6,6 +6,8 @@
     https://github.com/Smarties89/ses section "How does ses work"
 """
 
+description = "update ses to latest version by running the first two commands in section \"How does ses work\"."
+
 from subprocess import call
 
 __author__ = "smarties89 at github"

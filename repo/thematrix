@@ -4,6 +4,8 @@
     One of the first scripts i ever made in Python. Simply shows the matrix.
 """
 
+description = "The Matrix."
+
 import os
 import random
 import time

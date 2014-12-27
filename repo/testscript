@@ -1,5 +1,7 @@
 #!/bin/python
 # coding: utf-8
 
+description = "used for testing purposes."
+
 def main(args):
     print("test script run with following args {}".format(args))

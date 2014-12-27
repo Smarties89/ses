@@ -1,5 +1,8 @@
 #!/bin/pytho
 # coding: utf-8
+description = "bootstraps a default python environment with python-doit file for running, installing depedencies, run test."
+
+
 from os import mkdir, chdir
 
 
@@ -71,7 +74,6 @@ def task_runtests():
 
     print("Making depedencies")
     write("installs", "sudo apt-get install -y python")
-
 
     print("Making test folder")
     mkdir("test")

@@ -8,6 +8,8 @@
     Remark that this adds docker to your APT repositories.
 """
 
+description = "Simple installer script for installing latest (working) version of docker(Wrapper for https://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit )."
+
 from subprocess import call
 
 __author__ = "smarties at github"

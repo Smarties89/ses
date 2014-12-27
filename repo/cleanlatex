@@ -1,6 +1,9 @@
 #!/bin/python
 # coding: utf-8
+description = "Cleans common annoying temporary LaTeX files that some LaTeX compilers output."
+
 from subprocess import call
+
 
 def main(args):
     call("rm *.aux *.bbl *.blg *.log *.out *.toc", shell=True)
