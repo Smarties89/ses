@@ -115,4 +115,4 @@ The plan for new features is the following:
 * *ses search* command to search snippets.
 * Some kind of usersystem for restricting download - not sure about how or if this is going to be implemented.
 * More useful snippets
-* Autocorrection of scripts - so **ses run clea<TAB>** will show list of possible scripts starting with *clea*.
+* Autocorrection of scripts - so **ses run clea\<TAB\>** will show list of possible scripts starting with *clea*.
