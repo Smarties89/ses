@@ -70,6 +70,7 @@ Sunday zone is the default repository, and has so far the following scripts:
 
 * **bootstrappython** - bootstraps a default python environment with python-doit file for running, installing depedencies, run test.
 * **cleanlatex** - Cleans common annoying temporary LaTeX files that some LaTeX compilers output.
+* **cleanubuntucrashes** - Deletes crash reports, so Ubuntu reporting system stops spamming.
 * **installdockerubuntu** - Simple installer script for installing latest (working) version of docker(Wrapper for https://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit ).
 * **thematrix** - The matrix.
 * **update** - update ses to latest version by running the first two commands in section "How does ses work".
@@ -113,4 +114,5 @@ The plan for new features is the following:
 
 * *ses search* command to search snippets.
 * Some kind of usersystem for restricting download - not sure about how or if this is going to be implemented.
-* More useful snippets.
+* More useful snippets
+* Autocorrection of scripts - so **ses run clea<TAB>** will show list of possible scripts starting with *clea*.
