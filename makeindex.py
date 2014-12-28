@@ -24,6 +24,8 @@ else:
 def main(folder, saveto):
     l = []
     for filename in listdir(folder):
+        if filename == "index":
+            continue
         try:
             obj = imp.load_source("name", join_path(folder, filename))
             l.append(
