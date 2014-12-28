@@ -7,6 +7,7 @@ ses helps running snippets of python code from centralized repositories. This ca
 
 **Table of Contents**
 
+- Features
 - How does ses work
 - Some use cases of ses
 - Running your own repository
@@ -14,17 +15,36 @@ ses helps running snippets of python code from centralized repositories. This ca
 - Upcoming features
 
 
+Features
+--------
+
+- Easy to run snippets from central repositories
+- Ses file is small, easy to install, easy to modify, and very compatabile.
+- Repositories can be any fileserveing http server.
+- List all snippets in all repositories
+- Find information about each individual snippet.
+- Works on Linux, Mac, and soon Windows
+
 How does ses work
 -----------------
+Ses can be run as local user, but installing it to e.g. */usr/local/bin* helps you run snippets even faster.
 
-First you need to install ses by simply type the following in your command line
+**Linux install**
 
 ```
 sudo wget https://raw.githubusercontent.com/Smarties89/ses/master/ses --output-document=/usr/local/bin/ses
 sudo chmod +x /usr/local/bin/ses
 ```
 
-Now you can install any snippets in the repositories by calling:
+**Mac install**
+```
+sudo curl "https://raw.githubusercontent.com/Smarties89/ses/master/ses" -o "/usr/local/bin/ses"
+sudo chmod +x /usr/local/bin/ses
+```
+
+**Running snippets**
+
+Now you can run any snippets in the repositories by calling:
 
 ```
 ses run <snippetname> <args>
@@ -34,6 +54,8 @@ e.g you want to bootstrap a python app called awesome_app
 ```
 ses run bootstrappython awesome_app
 ```
+
+**Docstring information**
 
 Some snippets may have docstring information. If you want to see this you can use ```ses info <snippetname>```. E.g.
 ```
@@ -45,6 +67,8 @@ FOUND  update script!
     Updates ses to newest version. Executes the same commands as
     https://github.com/Smarties89/ses section "How does ses work"
 ```
+
+**Listing all snippets available**
 
 If you want to see more snippets, there is a list command
 ```
@@ -102,4 +126,4 @@ The plan for new features is the following:
 * *ses search* command to search snippets.
 * Some kind of usersystem for restricting download - not sure about how or if this is going to be implemented.
 * More useful snippets
-* Autocorrection of scripts - so **ses run clea\<TAB\>** will show list of possible scripts starting with *clea*.
+* Autocorrection of snippet - so **ses run clea\<TAB\>** will show list of possible snippets starting with *clea*.
