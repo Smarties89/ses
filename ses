@@ -108,9 +108,13 @@ def main():
             index = httpdownload(repo + "index")
             if index is None:
                 continue
-            totalindex.extend(jsondecode(index))
-       
-        # TODO: remove duplicates.
+            index = jsondecode(index)
+
+            # Adding to totalindex, unles already there.
+            for snippet in index:
+                if not snippet in totalindex:
+                    totalindex.append(snippet)
+
         
         # Showing them
         for snippet in totalindex:
