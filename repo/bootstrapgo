@@ -1,0 +1,123 @@
+#!/bin/pytho
+# coding: utf-8
+description = "bootstraps a default golang project with dockerfile, dependency installer, image builder, runwithindocker file."
+
+
+from os import mkdir, chdir
+# from os.path import join as joinpath
+
+
+def write(f, text):
+    with open(f, "w") as fh:
+        fh.write(text)
+
+
+def main(args):
+    if len(args) < 1:
+        print("Needs atleast project name")
+        return 1
+
+    prjname = args[0]
+    print("Making project folder")
+    mkdir(prjname)
+    chdir(prjname)
+
+    print("Making builddockerimage.py")
+    write("builddockerimage.bash", builddockerimage.
+            replace("{prjnamelower}", prjname.lower()))
+
+    print("Making Dockerfile")
+    write("Dockerfile", dockerfile.replace("{prjnamelower}", prjname.lower()))
+    
+    print("Making installdependencies.bash")
+    write("installdependencies.bash", installdependencies)
+    
+    print("Making README.md")
+    write("README.md", readme)
+    
+    print("Making run.bash")
+    write("run.bash", run.replace("{prjname}", prjname))
+    
+    print("Making runwithindocker.bash")
+    write(
+        "runwithindocker.bash",
+        runwithindocker.replace("{prjnamelower}", prjname.lower()))
+
+    print("Making src/main folder")
+    mkdir("src")
+    chdir("src")
+    mkdir("main")
+    chdir("main")
+
+    print("Making main file")
+    write("main.go", mainfile)
+
+    print("The project is now created! Here is the readme file")
+    print(readme)
+
+
+builddockerimage = """#!/bin/bash
+echo "Now start building your docker image"
+sudo docker build -t {prjnamelower} ."""
+
+
+dockerfile = """FROM  ubuntu:14.04
+COPY installdependencies.bash /tmp/installdependencies.bash
+RUN bash /tmp/installdependencies.bash
+EXPOSE 5000
+WORKDIR /src"""
+
+
+installdependencies = """#!/bin/bash
+sudo apt-get update
+sudo apt-get install -y golang
+sudo apt-get install -y ipython python-flake8 pychecker python-requests git"""
+
+
+run = """#!/bin/bash
+echo "Running your {prjname} project"
+export GOPATH=/src
+go run /src/src/main/main.go"""
+
+runwithindocker = """#!/bin/bash
+
+sudo docker run -t -i --rm -v ${PWD}:/src {prjnamelower} bash run.bash"""
+
+mainfile = """package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello ses Project")
+}"""
+
+readme = """Congratulation with your new project!
+
+Quick start
+===========
+
+Each file have different responsibilities. If you just want to start c/p this into your console:
+
+bash builddockerimage.bash
+bash runwithindocker.bash
+
+
+Workflow
+========
+
+Run *bash builddockerimage.bash** to create a image.
+Run **bash runwithindocker.bash** to run your project.
+When you have more dependencies, change the **installdependencies.bash**, and rebuild the image with **bash builddockerimage.bash**.
+Now you can run *runwithindocker.bash* again.
+
+Files
+=====
+
+This bootstrap created several files, each with their own purpose:
+
+- **builddockerimage.bash** - Creates a docker image for this project.
+- **Dockerfile** - Contains the information about how to build the docker image.
+- **installdependencies.bash** - Installs depedencies. Can be used on host or inside the docker image.
+- **README.md** - contains this text.
+- **run.bash** - runs the project, however not in the docker.
+- **runwithindocker.bash** - runs **run.bash** inside an instance of the docker image."""
