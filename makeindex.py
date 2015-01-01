@@ -1,5 +1,11 @@
 #!/bin/python
 # coding: utf-8
+
+"""
+    This should be run on the repository server to make the index file
+    which contains information about all snippets and docstrings.
+"""
+
 import logging
 from os import remove, listdir
 from os.path import join as join_path
