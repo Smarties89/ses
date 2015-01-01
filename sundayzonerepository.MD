@@ -6,8 +6,8 @@ The Sunday Zone Snippet Repository is the main repository, and are in sync with 
 Snippets
 --------
 
-* **bootstrappython** - bootstraps a default python environment with python-doit file for running, installing depedencies, run test.
-* **bootstrapgo** - bootstraps a default golang project with dockerfile, dependency installer, image builder, runwithindocker file.
+* **bootstrappython** - Bootstraps a Python project with dockerfile, dependency installer, image builder, runwithindocker file.
+* **bootstrapgo** - Bootstraps a golang project with dockerfile, dependency installer, image builder, runwithindocker file.
 * **cleanlatex** - Cleans common annoying temporary LaTeX files that some LaTeX compilers output.
 * **cleanubuntucrashes** - Deletes crash reports, so Ubuntu reporting system stops spamming.
 * **clustergit** - Run git commands on multiple git clones https://github.com/mnagel/clustergit.
