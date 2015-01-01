@@ -1,6 +1,7 @@
 #!/bin/pytho
 # coding: utf-8
-description = "bootstraps a default python environment with python-doit file for running, installing depedencies, run test."
+
+"""bootstraps a default python environment with python-doit file for running, installing depedencies, run test."""
 
 
 from os import mkdir, chdir

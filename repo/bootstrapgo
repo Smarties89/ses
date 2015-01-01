@@ -1,6 +1,7 @@
 #!/bin/pytho
 # coding: utf-8
-description = "bootstraps a default golang project with dockerfile, dependency installer, image builder, runwithindocker file."
+
+"""bootstraps a default golang project with dockerfile, dependency installer, image builder, runwithindocker file."""
 
 
 from os import mkdir, chdir

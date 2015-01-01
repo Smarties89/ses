@@ -2,17 +2,17 @@
 # coding: utf-8
 
 """
-    Installing newest docker.io Ubuntu 14.04 and 14.10. Taken from:
-    https://docs.docker.com/installation/ubuntulinux/
-    in section Ubuntu Trusty 14.04 (LTS) (64-bit).
-    Remark that this adds docker to your APT repositories.
+   Installing newest docker.io Ubuntu 14.04 and 14.10.
+   This adds docker to your APT repositories.
 """
-
-description = "Simple installer script for installing latest (working) version of docker(Wrapper for https://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit )."
+# This been made into a script from the tutorial
+# https://docs.docker.com/installation/ubuntulinux/
+# in section Ubuntu Trusty 14.04 (LTS) (64-bit).
 
 from subprocess import call
 
 __author__ = "smarties at github"
+
 
 
 def main(args):

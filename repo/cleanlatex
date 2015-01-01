@@ -1,6 +1,7 @@
 #!/bin/python
 # coding: utf-8
-description = "Cleans common annoying temporary LaTeX files that some LaTeX compilers output."
+
+"""Cleans common annoying temporary LaTeX files that some LaTeX compilers output."""
 
 from subprocess import call
 

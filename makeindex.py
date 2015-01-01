@@ -14,11 +14,13 @@ log = logging.getLogger()
 def debug():
     return False
 
+logging.basicConfig()
 if debug():
-    logging.basicConfig()
+
     log.setLevel(logging.DEBUG)
 else:
     logging.basicConfig(filename="ses.txt")
+    log.setLevel(logging.INFO)
 
 
 def main(folder, saveto):
@@ -27,16 +29,18 @@ def main(folder, saveto):
         if filename == "index":
             continue
         try:
+            log.info("Making index for {}".format(filename))
             obj = imp.load_source("name", join_path(folder, filename))
+
             l.append(
                 {
-                    "description": obj.description,
+                    "description": obj.__doc__.strip().replace("\n", ""),
                     "name": filename
                 })
             remove(join_path(folder, filename) + "c")
         except:  # We have no idea of knowing what errors can have happend,
                  # since the module is imported and it can leak exceptions.
-            log.warning("Failed during makeindex for {}".format(f))
+            log.warning("Failed during makeindex for {}".format(filename))
 
 
     with open(saveto, "w") as fh:

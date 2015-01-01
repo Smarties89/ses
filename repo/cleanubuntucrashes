@@ -5,7 +5,6 @@
     Deletes crash reports, so Ubuntu reporting system stops spamming.
 """
 
-description = "Deletes crash reports, so Ubuntu reporting system stops spamming."
 
 from subprocess import call
 
