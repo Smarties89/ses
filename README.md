@@ -13,6 +13,7 @@ ses helps running snippets of python code from centralized repositories. This ca
 - Running your own repository
 - Adding your own repository to ses
 - Upcoming features
+- Design considerations
 
 
 Features
@@ -120,11 +121,24 @@ Now you can distribute your *ses* file in your organisation. Of course you can r
 Upcoming features
 -----------------
 
-ses includes basic functionality making it useful for developers, it is however not finished.
-The plan for new features is the following:
+The plan for new features are the following:
 
 * *ses search* command to search snippets.
 * Some kind of usersystem for restricting download - not sure about how or if this is going to be implemented.
 * More useful snippets.
 * Autocorrection of snippet - so **ses run clea\<TAB\>** will show list of possible snippets starting with *clea*.
 * Maybe some kind of explicit cache mechanism, so running snippets does not demand Internet.
+* Make it more compatible, by testing different Python environments.
+
+The plan is pretty loose, so it will properly change.
+
+Design considerations
+---------------------
+
+ses is designed after certain principles. If you want to make changes to the ses file(not the repository), then you should strive for:
+
+* Making it simple to understand and change(if other people feel needed).
+* Make use of **no** extern libraries.
+* Make sure you use features/method/classes there are in older/newer version of Python.
+
+In other words, ses should be as compatible as possible, as it might run on Python 2.x, where x is low or Python 3.x.
