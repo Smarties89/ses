@@ -1,7 +1,7 @@
 #!/bin/pytho
 # coding: utf-8
 
-"""bootstraps a default python environment with python-doit file for running, installing depedencies, run test."""
+"""bootstraps a Python project with dockerfile, dependency installer, image builder, runwithindocker file. """
 
 
 from os import mkdir, chdir
@@ -18,12 +18,82 @@ def main(args):
         return 1
 
     prjname = args[0]
-    print("Making folder")
+
+    print("Making {} folder".format(prjname))
     mkdir(prjname)
     chdir(prjname)
 
-    main = """#!/bin/python
+    print("Making builddockerimage.py")
+    write("builddockerimage.bash", builddockerimage.
+            replace("{prjnamelower}", prjname.lower()))
+
+    print("Making Dockerfile")
+    write("Dockerfile", dockerfile.replace("{prjnamelower}", prjname.lower()))
+ 
+    print("Making installdependencies.bash")
+    write("installdependencies.bash", installdependencies)
+
+    print("Making README.md")
+    write("README.md", readme)
+
+    print("Making run.bash")
+    write("run.bash", run.replace("{prjname}", prjname))
+
+    print("Making runwithindocker.bash")
+    write(
+        "runwithindocker.bash",
+        runwithindocker.replace("{prjnamelower}", prjname.lower()))
+
+    print("Making main.py")
+    write("main.py", mainfile.format(prjname))
+
+    print("Making test folder")
+    mkdir("test")
+    write("test/__init__.py", "#!/usr/bin/python\n#place, or import, your test here")
+
+
+builddockerimage = """#!/bin/bash
+echo "Now start building your docker image"
+sudo docker build -t {prjnamelower} ."""
+
+
+dockerfile = """FROM  ubuntu:14.04
+COPY installdependencies.bash /tmp/installdependencies.bash
+RUN bash /tmp/installdependencies.bash
+EXPOSE 5000
+WORKDIR /src"""
+
+
+installdependencies = """#!/bin/bash
+sudo apt-get update
+sudo apt-get install -y python
+sudo apt-get install -y ipython python-flake8 pychecker python-requests git"""
+
+
+run = """#!/bin/bash
+echo "Running your {prjname} project"
+python main.py"""
+
+
+runwithindocker = """#!/bin/bash
+
+sudo docker run -t -i --rm -v ${PWD}:/src {prjnamelower} bash run.bash"""
+
+
+mainfile = '''#!/bin/python
 # coding: utf-8
+
+""" Docstring """
+
+__author__ = "Author1, and Author2"
+__copyright__ = "Copyright 2015, The Awesome project"
+__credits__ = ["Author1", "Author"],
+__license__ = "GPL"
+__version__ = "0.1"
+__maintainer__ = ""
+__email__ = ""
+__status__ = ""  # of code.
+
 import logging
 
 
@@ -41,41 +111,39 @@ else:
     logging.basicConfig(filename="mylogs.txt")
 
 
-
 def main():
     raise NotImplementedError()
 
 if __name__ == "__main__":
-    main()""".format(prjname)
-    write("main.py", main)
+    main()'''
 
-    print("Making doit script")
-    doit = """#!/bin/python
-import os
+readme = """Congratulation with your new project!
 
-def task_install():
-    return {
-        'actions': ["bash installs"],
-        'file_dep': ["installs"],
-        'verbosity': 2
-    }
+Quick start
+===========
 
-def task_rundebug():
-    return {
-        "actions": ["python main.py", ],
-        "verbosity": 2
-    }
+Each file have different responsibilities. If you just want to start c/p this into your console:
 
-def task_runtests():
-    return {
-        "actions": ["python -m unittest"],
-        "verbosity": 2
-    }"""
-    write("dodo.py", doit)
+bash builddockerimage.bash
+bash runwithindocker.bash
 
-    print("Making depedencies")
-    write("installs", "sudo apt-get install -y python")
 
-    print("Making test folder")
-    mkdir("test")
-    write("test/__init__.py", "#!/usr/bin/python\n#place, or import, your test here")
+Workflow
+========
+
+Run *bash builddockerimage.bash** to create a image.
+Run **bash runwithindocker.bash** to run your project.
+When you have more dependencies, change the **installdependencies.bash**, and rebuild the image with **bash builddockerimage.bash**.
+Now you can run *runwithindocker.bash* again.
+
+Files
+=====
+
+This bootstrap created several files, each with their own purpose:
+
+- **builddockerimage.bash** - Creates a docker image for this project.
+- **Dockerfile** - Contains the information about how to build the docker image.
+- **installdependencies.bash** - Installs depedencies. Can be used on host or inside the docker image.
+- **README.md** - contains this text.
+- **run.bash** - runs the project, however not in the docker.
+- **runwithindocker.bash** - runs **run.bash** inside an instance of the docker image."""
