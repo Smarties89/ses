@@ -125,5 +125,6 @@ The plan for new features is the following:
 
 * *ses search* command to search snippets.
 * Some kind of usersystem for restricting download - not sure about how or if this is going to be implemented.
-* More useful snippets
+* More useful snippets.
 * Autocorrection of snippet - so **ses run clea\<TAB\>** will show list of possible snippets starting with *clea*.
+* Maybe some kind of explicit cache mechanism, so running snippets does not demand Internet.
