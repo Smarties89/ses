@@ -82,44 +82,53 @@ def getscript(torun):
     return None
 
 
+def run(scriptname, scriptargs):
+    script = getscript(scriptname)
+    if script is not None:
+        print("Running script")
+        betterexec(script).main(scriptargs)
+    else:
+        print("Could not find script")
+
+
+def info(scriptname):
+    script = getscript(scriptname)
+    if script is not None:
+        print(betterexec(script).__doc__)
+    else:
+        print("Could not find script")
+
+
+def listsnippets():
+    totalindex = []
+
+    # Getting them
+    for repo in repos:
+        index = httpdownload(repo + "index")
+        if index is None:
+            continue
+        index = jsondecode(index)
+
+        # Adding to totalindex, unles already there.
+        for snippet in index:
+            if not snippet in totalindex:
+                totalindex.append(snippet)
+
+    # Showing them
+    for snippet in totalindex:
+        print("{name} - {description}".format(**snippet))
+
+
 def main():
     cmd = getarg(1)
     if cmd == "run":
-        scriptname = getarg(2)
-        scriptargs = getrestofargs(3)
-        script = getscript(scriptname)
-        if script is not None:
-            print("Running script")
-            betterexec(script).main(scriptargs)
-        else:
-            print("Could not find script")
+        run(getarg(2), getrestofargs(3))
+
     elif cmd == "info":
-        scriptname = getarg(2)
-        script = getscript(scriptname)
-        if script is not None:
-            print(betterexec(script).__doc__)
-        else:
-            print("Could not find script")
+        info(getarg(2))
+
     elif cmd == "list":
-        totalindex = []
-        
-        # Getting them
-        for repo in repos:
-            index = httpdownload(repo + "index")
-            if index is None:
-                continue
-            index = jsondecode(index)
-
-            # Adding to totalindex, unles already there.
-            for snippet in index:
-                if not snippet in totalindex:
-                    totalindex.append(snippet)
-
-        
-        # Showing them
-        for snippet in totalindex:
-            print("{name} - {description}".format(**snippet))
-
+        listsnippets()
     else:
         print("""usage: ses <command> [<args>]
 
@@ -132,7 +141,7 @@ Supprted commands are:
 Examples:
   To create a new Go project named MyAwesomeProject, you can type:
      ses run bootstrapgo MyAwesomeProject
-  
+ 
   If you want to find all snippets named bootstrap you can do 
      ses list | grep bootstrap
 
