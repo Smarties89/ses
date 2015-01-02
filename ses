@@ -63,7 +63,7 @@ def betterexec(script):
     scriptfile = tempfile.NamedTemporaryFile()
     scriptfile.write(script)
     scriptfile.flush()
-    obj =imp.load_source("name", scriptfile.name)
+    obj = imp.load_source("name", scriptfile.name)
     scriptfile.close()
     return obj
 
@@ -121,7 +121,26 @@ def main():
             print("{name} - {description}".format(**snippet))
 
     else:
-        print("Wrong arguments. Right now ses only supports ses run <script>")
+        print("""usage: ses <command> [<args>]
+
+Supprted commands are:
+   run      Run a snippet by the name of args[0] with the arguments args[1:]
+   list     List all available snippets from your repositories.
+   info     Finds information about the snippet named args[0].
+   help     Shows this text
+
+Examples:
+  To create a new Go project named MyAwesomeProject, you can type:
+     ses run bootstrapgo MyAwesomeProject
+  
+  If you want to find all snippets named bootstrap you can do 
+     ses list | grep bootstrap
+
+  Update ses can be done by
+     ses run update
+  since there is a snippet called update.
+
+See more at https://github.com/Smarties89/ses""")
 
 
 if __name__ == "__main__":
