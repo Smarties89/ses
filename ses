@@ -4,6 +4,7 @@ import logging
 from sys import argv
 import urllib2
 import tempfile
+from os.path import exists
 import imp
 from json import loads as jsondecode
 
@@ -58,45 +59,49 @@ def getrestofargs(i):
         return []
 
 
-def betterexec(script):
-    """ This takes a script string and import it as a file """
-    scriptfile = tempfile.NamedTemporaryFile()
-    scriptfile.write(script)
-    scriptfile.flush()
-    obj = imp.load_source("name", scriptfile.name)
-    scriptfile.close()
+def betterexec(snippet):
+    """ This takes a snippet string and import it as a file """
+    snippetfile = tempfile.NamedTemporaryFile()
+    snippetfile.write(snippet)
+    snippetfile.flush()
+    obj = imp.load_source("name", snippetfile.name)
+    snippetfile.close()
     return obj
 
 
-def getscript(torun):
+def getsnippet(torun):
     for repo in repos:
         print("Trying repository '{}'".format(repo))
         if not repo.endswith("/"):
             repo += "/"
-        script = httpdownload(repo + torun)
-        if script is None:
-            log.debug("Snippet Not found.")
+        snippet = httpdownload(repo + torun)
+
+        if snippet is None:
+            log.debug("Snippet not found.")
         else:
-            print("FOUND  {} script!".format(torun))
-            return script
+            print("FOUND  {} snippet!".format(torun))
+            return snippet
+
     return None
 
 
-def run(scriptname, scriptargs):
-    script = getscript(scriptname)
-    if script is not None:
-        print("Running script")
-        betterexec(script).main(scriptargs)
-    else:
-        print("Could not find script")
+def run(snippetname, snippetargs):
+    snippet = getsnippet(snippetname)
+    if snippet is None:
+        print("Could not find snippet.")
+        return
+
+    print("Running snippet..")
+    betterexec(snippet).main(snippetargs)
 
 
-def info(scriptname):
-    script = getscript(scriptname)
-    if script is not None:
-        print(betterexec(script).__doc__)
-    else:
-        print("Could not find script")
+def info(snippetname):
+    snippet = getsnippet(snippetname)
+    if snippet is None:
+        print("Could not find snippet.")
+        return
+
+    print(betterexec(snippet).__doc__)
 
 
 def listsnippets():
@@ -119,6 +124,22 @@ def listsnippets():
         print("{name} - {description}".format(**snippet))
 
 
+def downloadsnippet(snippetname):
+    if exists(snippetname + ".py"):
+        print("File '{}' already exists. Please remove or move the file before downloading snippet.".
+                format(snippetname + ".py"))
+        return
+
+    snippet = getsnippet(snippetname)
+    if snippet is None:
+        print("Could not find snippet")
+        return
+
+    print("Now writing it to '{}.py'".format(snippetname))
+    with open(snippetname + ".py", "w") as f:
+        f.write(snippet)
+
+
 def main():
     cmd = getarg(1)
     if cmd == "run":
@@ -129,6 +150,10 @@ def main():
 
     elif cmd == "list":
         listsnippets()
+
+    elif cmd == "pull":
+        downloadsnippet(getarg(2))
+
     else:
         print("""usage: ses <command> [<args>]
 
@@ -136,13 +161,14 @@ Supprted commands are:
    run      Run a snippet by the name of args[0] with the arguments args[1:]
    list     List all available snippets from your repositories.
    info     Finds information about the snippet named args[0].
+   pull     Get the snippet and save it as <snippetname>.py
    help     Shows this text
 
 Examples:
   To create a new Go project named MyAwesomeProject, you can type:
      ses run bootstrapgo MyAwesomeProject
  
-  If you want to find all snippets named bootstrap you can do 
+  If you want to find all snippets named bootstrap you can do
      ses list | grep bootstrap
 
   Update ses can be done by
