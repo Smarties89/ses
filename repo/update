@@ -17,8 +17,10 @@ def main(args):
 # This is for removing the old installation way.
 sudo rm /usr/bin/ses
 # Fetch and give it execution right
-sudo wget https://raw.githubusercontent.com/Smarties89/ses/master/ses --output-document=/usr/bin/ses
-sudo chmod +x /usr/bin/ses
+# TODO: Check if one the commands exist and then only use that one.
+sudo wget https://raw.githubusercontent.com/Smarties89/ses/master/ses --output-document=/usr/local/bin/ses
+sudo curl "https://raw.githubusercontent.com/Smarties89/ses/master/ses" -o "/usr/local/bin/ses"
+sudo chmod +x /usr/local/bin/ses
 """
     call(cmds, shell=True)
 
