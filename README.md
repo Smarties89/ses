@@ -3,7 +3,7 @@ ses
 
 Simple Execution System - run centralized snippets from the commandline
 
-ses helps running snippets of python code from centralized repositories. This can make it easier for sharing code that could be used for bootstrap projects, run daily tasks etc. There are currently one main repository(http://sunday.zone/ses/), but you can make your own reposititory, and distribute a modified *ses* file for your colleagues. You can see a list of the main public repository at https://github.com/Smarties89/ses/blob/master/sundayzonerepository.MD
+ses helps running snippets of python code from centralized repositories. This can make it easier for sharing code that could be used for bootstrap projects, run daily tasks etc. There are currently one main repository(https://sundayzone.com/ses/), but you can make your own reposititory, and distribute a modified *ses* file for your colleagues. You can see a list of the main public repository at https://github.com/Smarties89/ses/blob/master/sundayzonerepository.MD
 
 **Table of Contents**
 
