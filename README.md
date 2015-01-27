@@ -102,8 +102,8 @@ To add your own repository to ses, simply copy the ses file and edit the line 8 
 ```
 repos = [
 "http://localhost:6005",
-"https://sunday.zone/ses/",
-"http://sunday.zone/ses/"
+"https://sundayzone.com/ses/",
+"http://sundayzone.com/ses/"
 
 ]
 ```
@@ -111,12 +111,18 @@ to
 ```
 repos = [
 "http://localhost:6005",
-"https://sunday.zone/ses/",
-"http://sunday.zone/ses/",
+"https://sundayzone.com/ses/",
+"http://sundayzone.com/ses/",
 "http://myawesomedomain.io/sesrepository"
 ]
 ```
-Now you can distribute your *ses* file in your organisation. Of course you can remove and change the order of repositories as it fit you, and your organisation
+Now you can distribute your *ses* file in your organisation. Of course you can remove and change the order of repositories as it fit you, and your organisation. E.g. the repository could be defined as following:
+```
+repos = [
+ "http://myawesomebusiness.io/sesrepository"
+]
+```
+which could comply with some organisations rules that requires snippets to be validated.
 
 Upcoming features
 -----------------
