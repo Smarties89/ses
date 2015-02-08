@@ -12,8 +12,8 @@ log = logging.getLogger("ses")
 # repos has to start with http:// or https://
 repos = [
     "http://localhost:6005/",
-    "https://sunday.zone/ses/",
-    "http://sunday.zone/ses/"
+    "https://sundayzone.com/ses/",
+    "http://sundayzone.com/ses/"
 ]
 
 

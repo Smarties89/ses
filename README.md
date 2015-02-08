@@ -3,7 +3,7 @@ ses
 
 Simple Execution System - run centralized snippets from the commandline
 
-ses helps running snippets of python code from centralized repositories. This can make it easier for sharing code that could be used for bootstrap projects, run daily tasks etc. There are currently one main repository(http://sunday.zone/ses/), but you can make your own reposititory, and distribute a modified *ses* file for your colleagues. You can see a list of the main public repository at https://github.com/Smarties89/ses/blob/master/sundayzonerepository.MD
+ses helps running snippets of python code from centralized repositories. This can make it easier for sharing code that could be used for bootstrap projects, run daily tasks etc. There are currently one main repository(https://sundayzone.com/ses/), but you can make your own reposititory, and distribute a modified *ses* file for your colleagues. You can see a list of the main public repository at https://github.com/Smarties89/ses/blob/master/sundayzonerepository.MD
 
 **Table of Contents**
 
@@ -102,8 +102,8 @@ To add your own repository to ses, simply copy the ses file and edit the line 8 
 ```
 repos = [
 "http://localhost:6005",
-"https://sunday.zone/ses/",
-"http://sunday.zone/ses/"
+"https://sundayzone.com/ses/",
+"http://sundayzone.com/ses/"
 
 ]
 ```
@@ -111,12 +111,18 @@ to
 ```
 repos = [
 "http://localhost:6005",
-"https://sunday.zone/ses/",
-"http://sunday.zone/ses/",
+"https://sundayzone.com/ses/",
+"http://sundayzone.com/ses/",
 "http://myawesomedomain.io/sesrepository"
 ]
 ```
-Now you can distribute your *ses* file in your organisation. Of course you can remove and change the order of repositories as it fit you, and your organisation
+Now you can distribute your *ses* file in your organisation. Of course you can remove and change the order of repositories as it fit you, and your organisation. E.g. the repository could be defined as following:
+```
+repos = [
+ "http://myawesomebusiness.io/sesrepository"
+]
+```
+which could comply with some organisations rules that requires snippets to be validated.
 
 Upcoming features
 -----------------
