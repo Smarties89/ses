@@ -34,12 +34,18 @@ else:
 # that it can easily be installed.
 def httpdownload(url):
     try:
+        # Apparently cloudflare blocks anything that does not have a user agent.
+        headers = {
+            #'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11'
+            'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7'
+        }
+        req = urllib2.Request(url, headers=headers)
         response = urllib2.urlopen(url)
         if response.getcode() != 200:
             return None
         return response.read()
-    except Exception:
-        log.debug("'{}' not found.".format(url))
+    except Exception as e:
+        log.debug("'{}' not found. Exception {}".format(url, e))
         return None
     # TODO: Figure out what exactly urlopen can give of exceptions,
     # and print out better error messages.
@@ -71,9 +77,10 @@ def betterexec(snippet):
 
 def getsnippet(torun):
     for repo in repos:
-        print("Trying repository '{}'".format(repo))
         if not repo.endswith("/"):
             repo += "/"
+        
+        print("Trying to fetch '{}'".format(repo + torun))
         snippet = httpdownload(repo + torun)
 
         if snippet is None:
