@@ -1,0 +1,26 @@
+#!/bin/python
+# coding: utf-8
+"""
+    Renames all files in the folder
+"""
+
+
+import os
+
+__author__ = "Smarties at github"
+
+
+def main(args):
+    toappend = ""
+    for a in args:
+        toappend += " " + a
+    print("Renaming files in this directory by appending '{}' between the basename and extension..")
+    for fn in os.listdir("."):
+        basename, ext = os.path.splitext(fn)
+        if ext == "":
+            newfn = "{}{}".format(basename, toappend)
+        else:
+            newfn = "{}{}{}".format(basename, toappend, ext)
+        print("{} -> {}".format(fn, newfn))
+        os.rename(fn, newfn)
+
